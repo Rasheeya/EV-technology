@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STACKLY | City Command Center</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/animations.js"></script>
+    <link rel="stylesheet" href="./css/admin.css" />
+  </head>
+  <body id="dashboard-body">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <a href="login.html">
+          <img
+          src="assets/new-logo.webp"
+          alt="STACKLY"
+          style="height: 35px; width: auto"
+        />
+      </a>
+      <i class=" fa-solid fa-xmark sidebar-close-btn" onclick="toggleSidebar()" style="display: none; cursor: pointer; font-size: 1.5rem; color: #fff;"></i>
+      </div>
+      <ul>
+        <li
+          class="active"
+          onclick="
+            loadSection('overview', this);
+            toggleSidebar();
+          "
+        >
+          <i class=" fa-solid fa-grip"></i> Overview
+        </li>
+        <li
+          onclick="
+            loadSection('systems', this);
+            toggleSidebar();
+          "
+        >
+          <i class=" fa-solid fa-car-side"></i> Grid Nodes
+        </li>
+        <li
+          onclick="
+            loadSection('charging', this);
+            toggleSidebar();
+          "
+        >
+          <i class=" fa-solid fa-bolt"></i> Energy Network
+        </li>
+        <li
+          onclick="
+            loadSection('users', this);
+            toggleSidebar();
+          "
+        >
+          <i class=" fa-solid fa-users"></i> User Directory
+        </li>
+        <li
+          onclick="
+            loadSection('reports', this);
+            toggleSidebar();
+          "
+        >
+          <i class=" fa-solid fa-arrow-trend-up"></i> Analytics
+        </li>
+      </ul>
+      <div
+        class="logout-btn"
+        onclick="window.location.href = 'login.html'"
+        style="
+          padding: 15px 18px;
+          margin-top: auto; margin-bottom: 0;
+          color: #ff4d4d;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-weight: 700;
+          cursor: pointer;
+          border-radius: 12px;
+          transition: 0.3s;
+          background: rgba(255, 77, 77, 0.05);
+        "
+      >
+        <i class=" fa-solid fa-right-from-bracket"></i> <span>Logout</span>
+      </div>
+      
+    </aside>
+
+    <div class="main">
+      <nav class="navbar">
+        <div style="display: flex; align-items: center; gap: 15px">
+          <i
+            class=" fa-solid fa-bars mobile-nav-toggle"
+            onclick="toggleSidebar()"
+          ></i>
+          <div style="font-weight: 800" id="page-title" class="desktop-only-title">
+            CITY ADMIN <span style="color: var(--text-muted)">/</span> OVERVIEW
+          </div>
+          <a href="index.html"><img src="assets/new-logo.webp" class="mobile-only-logo" style="height: 30px; width: auto; display: none;" alt="STACKLY">
+            </a>
+        </div>
+        <div style="display: flex; gap: 15px; align-items: center; min-width: 0;">
+          <i
+            class=" fa-solid fa-bell"
+            style="font-size: 1.4rem; cursor: pointer; flex-shrink: 0;"
+            onclick="window.location.href = '404.html'"
+          ></i>
+          <div style="text-align: right; min-width: 0; max-width: 200px;" class="admin-user-info">
+            <b style="display: block; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="admin-name"
+              >City Admin</b
+            >
+            <span
+              style="
+                display: block;
+                font-size: 0.75rem;
+                color: var(--text-muted);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              "
+              class="admin-email"
+              >admin@STACKLY.com</span
+            >
+          </div>
+          <div
+            class="avatar"
+            style="
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: var(--accent);
+              color: #000;
+              border: 2px solid #000;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: 800;
+              cursor: pointer;
+              flex-shrink: 0;
+            "
+            onclick="window.location.href = '404.html'"
+          >
+            AD
+          </div>
+        </div>
+      </nav>
+
+      <div class="content" id="content" style="margin-top: 60px;"></div>
+    </div>
+
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        if (window.innerWidth <= 1024) {
+          sidebar.classList.toggle("active");
+        }
+      }
+      function loadSection(section, el) {
+        if (el) {
+          document
+            .querySelectorAll(".sidebar li")
+            .forEach((l) => l.classList.remove("active"));
+          el.classList.add("active");
+        }
+
+        const content = document.getElementById("content");
+
+        if (section === "overview") {
+          content.innerHTML = `
+      <div class="section-header" data-aos="fade-up">
+        <h2 data-aos="fade-up" data-aos-delay="100">City Infrastructure</h2>
+        <p data-aos="fade-up" data-aos-delay="200">Real-time telemetry and commercial performance for Metro District 1.</p>
+      </div>
+      
+      <div class="cards">
+        <div class="card hover-card" data-aos="fade-up" data-aos-delay="100">
+          <i class=" fa-solid fa-car trend-icon animate-float-complex" data-aos="zoom-in" data-aos-delay="200"></i>
+          <span class="label">Active Sensors</span>
+          <div class="value"><span class="animate-counter" data-target="1420">0</span></div>
+          <div class="trend" style="color:var(--success)"><i class=" fa-solid fa-arrow-trend-up pulse-hover"></i> +12% this month</div>
+        </div>
+        <div class="card hover-card" data-aos="fade-up" data-aos-delay="200">
+          <i class=" fa-solid fa-charging-station trend-icon animate-float-complex" data-aos="zoom-in" data-aos-delay="300"></i>
+          <span class="label">Grid Uptime</span>
+          <div class="value"><span class="animate-counter" data-target="99.8">0</span>%</div>
+          <div class="trend" style="color:var(--success)"><i class=" fa-solid fa-circle-check pulse-hover"></i> Optimal Performance</div>
+        </div>
+        <div class="card hover-card" data-aos="fade-up" data-aos-delay="300">
+          <i class=" fa-solid fa-sack-dollar trend-icon animate-float-complex" data-aos="zoom-in" data-aos-delay="400"></i>
+          <span class="label">Energy Saved (MWh)</span>
+          <div class="value"><span class="animate-counter" data-target="142.5">0</span>K</div>
+          <div class="trend" style="color:var(--success)"><i class=" fa-solid fa-arrow-trend-up pulse-hover"></i> +8.4% vs LY</div>
+        </div>
+      </div>
+
+      <div class="grid-responsive-2-1" style="display:grid; grid-template-columns: 2fr 1fr; gap:24px;">
+        <div class="card"><canvas id="mainChart" height="150"></canvas></div>
+        <div class="card">
+          <h4 style="margin-bottom:20px">Recent Alerts</h4>
+          <div style="font-size:0.85rem; display:flex; flex-direction:column; gap:15px;">
+            <div style="border-left:4px solid var(--accent); padding-left:10px;">
+                <strong>Node #42 Offline</strong><br><small>Maintenance required in Sector 4</small>
+            </div>
+            <div style="border-left:4px solid #fff; padding-left:10px;">
+                <strong>New Sensors Deployed</strong><br><small>20x Aero-Sense units active</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+          new Chart(document.getElementById("mainChart"), {
+            type: "line",
+            data: {
+              labels: ["01:00", "04:00", "08:00", "12:00", "16:00", "20:00"],
+              datasets: [
+                {
+                  label: "Energy Demand (kW)",
+                  data: [30, 20, 85, 120, 95, 110],
+                  borderColor: "#d4ff00",
+                  tension: 0.4,
+                  fill: true,
+                  backgroundColor: "rgba(212, 255, 0, 0.1)",
+                },
+              ],
+            },
+            options: {
+              plugins: { legend: { display: false } },
+              scales: {
+                x: { grid: { display: false }, ticks: { color: "#a1a1aa" } },
+                y: {
+                  grid: { color: "rgba(255,255,255,0.05)" },
+                  ticks: { color: "#a1a1aa" },
+                },
+              },
+            },
+          });
+        }
+
+        if (section === "systems") {
+          content.innerHTML = `
+      <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;" data-aos="fade-up">
+        <div><h2 data-aos="fade-up" data-aos-delay="100">Sensor Inventory</h2><p data-aos="fade-up" data-aos-delay="200">Manage and track every Smart Grid in the STACKLY ecosystem.</p></div>
+        <button onclick="window.location.href='404.html'" style="background:var(--deep-charcoal); color:#fff; border:none; padding:12px 24px; border-radius:12px; font-weight:800; cursor:pointer;" data-aos="fade-up" data-aos-delay="300"><i class=" fa-solid fa-plus"></i> Add Node</button>
+      </div>
+      <div class="cards">
+        <div class="card hover-card pulse-hover" data-aos="fade-up" data-aos-delay="100"><span class="label">Total Nodes</span><div class="value" style="font-size:2.5rem;"><span class="animate-counter" data-target="248">0</span></div></div>
+        <div class="card hover-card pulse-hover" data-aos="fade-up" data-aos-delay="200"><span class="label">Active Online</span><div class="value" style="font-size:2.5rem; color:var(--success);"><span class="animate-counter" data-target="185">0</span></div></div>
+        <div class="card hover-card pulse-hover" data-aos="fade-up" data-aos-delay="300"><span class="label">In Maintenance</span><div class="value" style="font-size:2.5rem; color:var(--warning);"><span class="animate-counter" data-target="12">0</span></div></div>
+      </div>
+      <div class="visual-list">
+        <div class="item-row">
+          <div class="item-info">
+            <h4  >Aero-Sense Unit</h4>
+            <p >ID: AS-9920 | <span style="color:var(--success)">Battery: 98%</span></p>
+            <small >Last Ping: 2 mins ago (Sector 1)</small>
+          </div>
+          <i class=" fa-solid fa-caret-right" style="margin-left:auto"></i>
+        </div>
+        <div class="item-row">
+          <div class="item-info">
+            <h4 >Grid Node 2.0</h4>
+            <p>ID: GN-4412 | <span style="color:var(--warning)">Battery: 42%</span></p>
+            <small >Route: Downtown Main</small>
+          </div>
+          <i class=" fa-solid fa-caret-right" style="margin-left:auto"></i>
+        </div>
+      </div>
+    `;
+        }
+
+        if (section === "charging") {
+          content.innerHTML = `
+      <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;">
+        <div><h2>Power Grid Hub</h2><p>Station health and live charging sessions.</p></div>
+        <button onclick="window.location.href='404.html'" style="background:var(--accent); color:#000; border:none; padding:12px 24px; border-radius:12px; font-weight:800; cursor:pointer;"><i class=" fa-solid fa-bolt"></i> Deploy Station</button>
+      </div>
+      <div class="cards">
+        <div class="card" data-aos="fade-up" data-aos-delay="100"><span class="label">Total Stations</span><div class="value">142</div></div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200"><span class="label">Active Ports</span><div class="value" style="color:var(--success);">384</div></div>
+        <div class="card" data-aos="fade-up" data-aos-delay="300"><span class="label">Offline</span><div class="value" style="color:#ff4d4d;">3</div></div>
+        <div class="card" data-aos="fade-up" data-aos-delay="400"><span class="label">Dispensed (24H)</span><div class="value">4.2MWh</div></div>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr><th>Station ID</th><th>Location</th><th>Tier Output</th><th>Current Load</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>ST-SALEM-01</td><td>Salem Central Mall</td><td>150kW DC Fast</td><td>120kW</td><td><span class="badge" style="color:var(--accent)">8/10 In Use</span></td></tr>
+            <tr><td>ST-SALEM-05</td><td>Tech Park North</td><td>50kW AC Target</td><td>0kW</td><td><span class="badge" style="color:#fff">12 Available</span></td></tr>
+            <tr><td>ST-SALEM-09</td><td>Highway 44 Hub</td><td>250kW Hyper</td><td>210kW</td><td><span class="badge" style="color:var(--accent)">4/4 In Use</span></td></tr>
+            <tr><td>ST-SALEM-12</td><td>Downtown Plaza</td><td>150kW DC Fast</td><td>78kW</td><td><span class="badge" style="color:var(--accent)">3/6 In Use</span></td></tr>
+            <tr><td>ST-SALEM-18</td><td>Airport Terminal</td><td>250kW Hyper</td><td>0kW</td><td><span class="badge" style="color:#ff4d4d;">Maintenance</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    `;
+        }
+
+        if (section === "users") {
+          content.innerHTML = `
+      <div class="section-header" style="display:flex; justify-content:space-between; align-items:center;">
+        <div><h2>Access Control</h2><p>Monitor staff roles and citizen credentials.</p></div>
+        <button onclick="window.location.href='404.html'" style="background:var(--deep-charcoal); color:#fff; border:none; padding:12px 24px; border-radius:12px; font-weight:800; cursor:pointer;"><i class=" fa-solid fa-envelope-open-text"></i> Invite User</button>
+      </div>
+      <div class="visual-list" style="grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));">
+        <div class="item-row">
+          <div style="width:50px; height:50px; border-radius:50%; background:rgba(255,255,255,0.1); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800;">AD</div>
+          <div style="flex:1">
+            <h4>Administrator</h4>
+            <p style="font-size:0.8rem;">admin@stackly.com</p>
+            <span class="badge badge-blue" style="margin-top:8px; display:inline-block;">Super Admin</span>
+          </div>
+          <i class=" fa-solid fa-ellipsis-vertical" style="font-size:1.5rem; color:var(--text-muted); cursor:pointer;"></i>
+        </div>
+        <div class="item-row">
+          <div style="width:50px; height:50px; border-radius:50%; background:var(--accent); color:#000; display:flex; align-items:center; justify-content:center; font-weight:800;">JR</div>
+          <div style="flex:1">
+            <h4>James Rubert</h4>
+            <p style="font-size:0.8rem; margin-bottom:10px;">james.r@stackly.com</p>
+            <span class="badge"  margin-top:8x; display:inline-block;">Lead Driver</span>
+          </div>
+          <i class=" fa-solid fa-ellipsis-vertical" style="font-size:1.5rem; color:var(--text-muted); cursor:pointer;"></i>
+        </div>
+        <div class="item-row">
+          <div style="width:50px; height:50px; border-radius:50%; background:rgba(255,255,255,0.1); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800;">SC</div>
+          <div style="flex:1">
+            <h4>Sarah Connor</h4>
+            <p style="font-size:0.8rem;">s.connor@stackly.com</p>
+            <span class="badge" style="background:rgba(255,255,255,0.1); color:#fff; margin-top:8px; display:inline-block;">Fleet Driver</span>
+          </div>
+          <i class=" fa-solid fa-ellipsis-vertical" style="font-size:1.5rem; color:var(--text-muted); cursor:pointer;"></i>
+        </div>
+        <div class="item-row">
+          <div style="width:50px; height:50px; border-radius:50%; background:rgba(255,255,255,0.1); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800;">MK</div>
+          <div style="flex:1">
+            <h4>Michael King</h4>
+            <p style="font-size:0.8rem;">m.king@stackly.com</p>
+            <span class="badge badge-green" style="margin-top:8px; display:inline-block;">Grid Technician</span>
+          </div>
+          <i class=" fa-solid fa-ellipsis-vertical" style="font-size:1.5rem; color:var(--text-muted); cursor:pointer;"></i>
+        </div>
+        <div class="item-row">
+          <div style="width:50px; height:50px; border-radius:50%; background:rgba(255,255,255,0.1); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800;">LT</div>
+          <div style="flex:1">
+            <h4>Liam Taylor</h4>
+            <p style="font-size:0.8rem;">liam.t@stackly.com</p>
+            <span class="badge" style="background:rgba(255,255,255,0.1); color:#fff; margin-top:8px; display:inline-block;">Fleet Driver</span>
+          </div>
+          <i class=" fa-solid fa-ellipsis-vertical" style="font-size:1.5rem; color:var(--text-muted); cursor:pointer;"></i>
+        </div>
+      </div>
+    `;
+        }
+
+        if (section === "reports") {
+          content.innerHTML = `
+      <div class="section-header" data-aos="fade-up">
+        <h2 data-aos="fade-up" data-aos-delay="100">Analytics Hub</h2>
+        <p data-aos="fade-up" data-aos-delay="200">Data-driven insights for STACKLY Fleet.</p>
+      </div>
+      <div class="grid-responsive-reports" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 24px;">
+        <div class="card">
+            <h4 style="margin-bottom:10px;">Monthly Revenue</h4>
+            <div style="font-size:2rem; font-weight:800; color:var(--accent); background:var(--deep-charcoal); display:inline-block; padding:8px 20px; border-radius:15px;">$412,450</div>
+            <p style="margin-top:15px; font-size:0.9rem; color:var(--success); font-weight:700;"><i class=" fa-solid fa-arrow-trend-up"></i> Up 14% compared to last month</p>
+        </div>
+        <div class="card">
+            <h4 style="margin-bottom:10px;">Energy Dispensed</h4>
+            <div style="font-size:2rem; font-weight:800; color:var(--white);">1.2 GWh</div>
+            <p style="margin-top:15px; font-size:0.9rem; color:var(--text-muted); font-weight:600;">Total output across all hyper-hubs globally.</p>
+        </div>
+      </div>
+    `;
+        }
+
+        // Ensure AOS recognizes new elements
+        setTimeout(() => {
+          AOS.refresh();
+        }, 100);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const userEmail =
+          localStorage.getItem("userEmail") || "admin@stackly.com";
+        const userRole = localStorage.getItem("userRole") || "admin";
+        let userName = localStorage.getItem("userName");
+        if (!userName || userName === "Welcome Back")
+          userName = "Administrator";
+        const initials =
+          userName
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .toUpperCase()
+            .substring(0, 2) || "AD";
+
+        const adminName = document.querySelector(".admin-name");
+        const adminEmail = document.querySelector(".admin-email");
+        const avatar = document.querySelector(".avatar");
+
+        if (adminName) adminName.innerText = userName;
+        if (adminEmail)
+          adminEmail.innerText = `${userRole.toUpperCase()} • ${userEmail}`;
+        if (avatar) avatar.innerText = initials;
+
+        loadSection("overview");
+      });
+    </script>
+
+    <script>
+      AOS.init({ duration: 1000, once: true });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News | STACKLY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/animations.js"></script>
+    <link rel="stylesheet" href="./css/blog.css">
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo-box" style="font-size: 1.8rem; font-weight: 800; color: var(--accent); letter-spacing: -1px; text-decoration: none;">
+          <div style="height: 40px; width: 180px; background-color: var(--accent); -webkit-mask: url('assets/logo_0368.webp') no-repeat left center; -webkit-mask-size: contain; mask: url('assets/logo_0368.webp') no-repeat left center; mask-size: contain;" aria-label="Stackly Logo"></div>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item"><a href="index.html">HOME</a></li>
+          <li class="nav-item"><a href="infrastructure.html">INFRASTRUCTURE</a></li>
+          <li class="nav-item"><a href="about.html">ABOUT</a></li>
+          <li class="nav-item"><a href="solutions.html">SOLUTIONS</a></li>
+          <li class="nav-item"><a href="news.html" style="color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 5px;">NEWS</a></li>
+          <li class="nav-item"><a href="contact.html">CONTACT</a></li>
+          <li class="nav-item nav-login-btn">
+            <div class="nav-buttons">
+              <a href="login.html" class="btn-primary" style="background: rgba(15, 147, 47, 0.2); border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(15, 147, 47, 0.4); text-transform: uppercase; font-weight: bold; padding: 10px 20px; border-radius: 25px; color: #fff; text-decoration: none;">PORTAL LOGIN</a>
+            </div>
+          </li>
+        </ul>
+
+        <div
+          class="mobile-trigger"
+          id="mobileTrigger"
+          style="z-index: 3000; position: relative"
+        >
+          <i class=" fa-solid fa-bars" id="menuIcon"></i>
+        </div>
+      </div>
+    </nav>
+
+    <section class="page-hero">
+      <img src="assets/blog-hero.webp"
+        class="page-hero-bg animate-float"
+        alt="News Hero"
+      />
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-content" data-aos="fade-up">
+        <h1>Latest <span>News</span></h1>
+        <p>
+          Updates, insights, and innovations from the forefront of smart city development.
+        </p>
+      </div>
+    </section>
+
+    <!-- Catalog Controls -->
+    <div class="catalog-controls">
+      <div class="filter-group">
+        <button class="filter-btn active">All Articles</button>
+        <button class="filter-btn">AI & Data</button>
+        <button class="filter-btn">Sustainability</button>
+        <button class="filter-btn">Infrastructure</button>
+      </div>
+      <input type="text" class="search-box" placeholder="Search news..." />
+    </div>
+
+    <main class="container" style="padding-top: 50px; padding-bottom: 100px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 40px;">
+        
+        <!-- Post 1 -->
+        <article class="post-card" data-aos="fade-up" style="background: var(--deep-charcoal); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column;">
+          <img src="assets/blog-featured.webp" alt="News Image" style="width: 100%; height: 250px; object-fit: cover;">
+          <div style="padding: 30px; flex-grow: 1; display: flex; flex-direction: column;">
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+              <span style="color: var(--accent); font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">AI & Data</span>
+              <span style="color: var(--text-muted); font-size: 0.8rem;">July 6, 2026</span>
+            </div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 15px;">City Council Approves $40M Smart Grid Expansion</h3>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 25px; flex-grow: 1;">
+              The next phase of our intelligent power distribution network will cover an additional 300 square miles, focusing on renewable microgrids.
+            </p>
+            <a href="404.html" style="color: var(--text-main); font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: var(--transition);">
+              Read Article <i class=" fa-solid fa-arrow-right" style="color: var(--accent);"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="post-card" data-aos="fade-up" data-aos-delay="100" style="background: var(--deep-charcoal); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column;">
+          <img src="assets/hero-1-new.webp" alt="News Image" style="width: 100%; height: 250px; object-fit: cover;">
+          <div style="padding: 30px; flex-grow: 1; display: flex; flex-direction: column;">
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+              <span style="color: var(--accent); font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">Infrastructure</span>
+              <span style="color: var(--text-muted); font-size: 0.8rem;">June 28, 2026</span>
+            </div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Autonomous Public Transit Routes Go Live</h3>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 25px; flex-grow: 1;">
+              Five new level-4 autonomous bus routes have been activated in the downtown sector, integrated seamlessly with the STACKLY traffic control AI.
+            </p>
+            <a href="404.html" style="color: var(--text-main); font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: var(--transition);">
+              Read Article <i class=" fa-solid fa-arrow-right" style="color: var(--accent);"></i>
+            </a>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="post-card" data-aos="fade-up" data-aos-delay="200" style="background: var(--deep-charcoal); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); display: flex; flex-direction: column;">
+          <img src="assets/eco-friendly.webp" alt="News Image" style="width: 100%; height: 250px; object-fit: cover;">
+          <div style="padding: 30px; flex-grow: 1; display: flex; flex-direction: column;">
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+              <span style="color: var(--accent); font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">Sustainability</span>
+              <span style="color: var(--text-muted); font-size: 0.8rem;">June 15, 2026</span>
+            </div>
+            <h3 style="font-size: 1.5rem; margin-bottom: 15px;">Urban Carbon Footprint Reduced by 18%</h3>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 25px; flex-grow: 1;">
+              Recent data from our IoT sensor array shows a massive drop in emissions following the optimization of heavy freight routing and smart lighting.
+            </p>
+            <a href="404.html" style="color: var(--text-main); font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: var(--transition);">
+              Read Article <i class=" fa-solid fa-arrow-right" style="color: var(--accent);"></i>
+            </a>
+          </div>
+        </article>
+
+      </div>
+      </div>
+
+      <!-- [NEW] Trending Topics -->
+      <section class="section-padding bg-lighter" style="margin-top: 50px;">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 40px;" data-aos="fade-up">
+            <span class="label" style="color: var(--accent);">Explore</span>
+            <h2>Trending Topics</h2>
+          </div>
+          <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="100">
+            <button class="filter-btn active pulse-hover">#AI_Traffic</button>
+            <button class="filter-btn pulse-hover">#SmartGrid</button>
+            <button class="filter-btn pulse-hover">#Decarbonization</button>
+            <button class="filter-btn pulse-hover">#5G_Deployment</button>
+            <button class="filter-btn pulse-hover">#AutonomousFleets</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- [NEW] Featured Video Interview -->
+      <section class="section-padding bg-darker">
+        <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 50px; align-items: center;">
+          <div data-aos="fade-right">
+            <span class="label" style="color: var(--accent);">Featured Media</span>
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">The Future of Urban Intelligence</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px;">
+              Watch our CEO, Dr. Aris Thorne, discuss the massive infrastructure rollout in Metro District 1 and the role of autonomous logistics in the coming decade.
+            </p>
+            <div style="display: flex; gap: 20px; align-items: center;">
+              <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--accent); color: #000; display: grid; place-items: center; font-size: 1.5rem; cursor: pointer;" class="pulse-hover">
+                <i class=" fa-solid fa-play"></i>
+              </div>
+              <span style="font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Watch Interview (14:20)</span>
+            </div>
+          </div>
+          <div class="hover-card" style="border-radius: 20px; overflow: hidden; position: relative;" data-aos="fade-left">
+            <img src="assets/bg-pattern.webp" alt="Video Thumbnail" style="width: 100%; height: 350px; object-fit: cover; opacity: 0.8;">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; border-radius: 50%; background: rgba(0,255,136,0.8); color: #000; display: grid; place-items: center; font-size: 2rem; cursor: pointer;" class="animate-float-complex">
+              <i class=" fa-solid fa-play"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- [NEW] Newsletter Banner -->
+      <section style="margin-top: 50px;" data-aos="zoom-in">
+        <div class="container">
+          <div style="background: linear-gradient(135deg, var(--deep-charcoal) 0%, #000 100%); border: 1px solid var(--accent); border-radius: 30px; padding: 60px; text-align: center; position: relative; overflow: hidden;">
+            <i class=" fa-solid fa-envelope-open" style="position: absolute; top: -20px; right: 20px; font-size: 15rem; color: rgba(0,255,136,0.05); transform: rotate(15deg);"></i>
+            <h2 style="font-size: 2.5rem; margin-bottom: 15px; position: relative; z-index: 2;">Stay Ahead of the Curve</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 30px; position: relative; z-index: 2;">Get weekly insights on smart city tech, municipal policies, and deployment news.</p>
+            <form style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; position: relative; z-index: 2;" onsubmit="event.preventDefault(); alert('Subscribed!');">
+              <input type="email" placeholder="Enter your email address" required style="padding: 15px 25px; border-radius: 12px; border: 1px solid var(--border); background: rgba(255,255,255,0.05); color: #fff; width: 100%; max-width: 400px; outline: none;">
+              <button type="submit" class="btn-primary glow-effect pulse-hover" style="border: none; border-radius: 12px; padding: 0 30px; cursor: pointer; font-weight: bold;" >Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand" data-aos="fade-up">
+          <a href="index.html" class="logo-box" style="font-size: 1.8rem; color: var(--accent); letter-spacing: -1px; margin-bottom: 20px;">
+            <div style="height: 40px; width: 180px; background-color: var(--accent); -webkit-mask: url('assets/logo_0368.webp') no-repeat left center; -webkit-mask-size: contain; mask: url('assets/logo_0368.webp') no-repeat left center; mask-size: contain; margin-bottom: 20px;" aria-label="Stackly Logo"></div>
+          </a>
+          <p>
+            Redefining the boundaries of urban living through intelligent data, sustainable infrastructure, and connected communities.
+          </p>
+          <div class="social-links">
+            <a href="404.html"><i class=" fa-brands fa-instagram"></i></a>
+            <a href="404.html"><i class=" fa-brands fa-x-twitter"></i></a>
+            <a href="404.html"><i class=" fa-brands fa-linkedin"></i></a>
+            <a href="404.html"><i class=" fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column" data-aos="fade-up" data-aos-delay="100">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="solutions.html">SOLUTIONS</a></li>
+            <li><a href="news.html">News & Updates</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="footer-heading">Ecosystem</h4>
+          <ul class="footer-links">
+            <li><a href="404.html">Smart Grid</a></li>
+            <li><a href="404.html">IoT Sensors</a></li>
+            <li><a href="404.html">Data Dashboard</a></li>
+            <li><a href="404.html">Citizen Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column newsletter-box" data-aos="fade-up" data-aos-delay="300">
+          <h4 class="footer-heading">Stay Connected</h4>
+          <p>Get the latest updates on smart city innovations and deployments.</p>
+          <form class="input-group" onsubmit="event.preventDefault(); window.location.href='404.html';">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" class="btn-send" >
+              <i class=" fa-solid fa-paper-plane" style="font-size: 1.2rem; color: #000 !important;"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="copyright">
+          &copy; 2026 STACKLY Technologies. Designed for the Future.
+        </div>
+        <div class="footer-links" style="display: flex; gap: 20px; margin-bottom: 0">
+          <a href="404.html" style="font-size: 0.8rem">Privacy Policy</a>
+          <a href="404.html" style="font-size: 0.8rem">Terms of Service</a>
+          <a href="404.html" style="font-size: 0.8rem">Cookies</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      AOS.init({ duration: 1000, once: true });
+
+      const navbar = document.getElementById("navbar");
+      const mobileTrigger = document.getElementById("mobileTrigger");
+      const navMenu = document.getElementById("navMenu");
+      const menuIcon = document.getElementById("menuIcon");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+      });
+
+      mobileTrigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        navMenu.classList.toggle("active");
+        if (navMenu.classList.contains("active")) {
+          menuIcon.classList.remove("fa-solid fa-bars");
+          menuIcon.classList.add("fa-solid fa-xmark");
+        } else {
+          menuIcon.classList.remove("fa-solid fa-xmark");
+          menuIcon.classList.add("fa-solid fa-bars");
+        }
+      });
+
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        setTimeout(() => {
+          loader.classList.add("loader-hidden");
+        }, 300);
+      });
+      
+      const currentLocation = window.location.pathname.split("/").pop();
+      const navLinks = document.querySelectorAll(".nav-item a");
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentLocation) {
+          link.classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

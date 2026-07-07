@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STACKLY | Citizen Portal</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/animations.js"></script>
+    <link rel="stylesheet" href="./css/user.css">
+  </head>
+
+  <body>
+    <div
+      class="sidebar-overlay"
+      id="sidebarOverlay"
+      onclick="toggleSidebar()"
+    ></div>
+
+
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <a href="login.html">
+            <img
+            src="assets/new-logo.webp"
+            alt="STACKLY"
+            style="height: 35px; width: auto"
+          />
+        </a>
+        <i class=" fa-solid fa-xmark mobile-close-btn" onclick="toggleSidebar()" style="cursor: pointer;"></i>
+      </div>
+      <ul class="sidebar-menu">
+        <li class="active" onclick="loadUserSection('overview', this)">
+          <i class=" fa-solid fa-house"></i> Overview
+        </li>
+        <li onclick="loadUserSection('profile', this)">
+          <i class=" fa-solid fa-circle-user"></i> Profile Summary
+        </li>
+        <li onclick="loadUserSection('trips', this)">
+          <i class=" fa-solid fa-map"></i> My Permits
+        </li>
+        <li onclick="loadUserSection('charging', this)">
+          <i class=" fa-solid fa-battery-half"></i> Energy Usage
+        </li>
+      </ul>
+      <div class="logout-btn-container" style="margin-top: auto; margin-bottom: 0;">
+        <div class="logout-btn" onclick="window.location.href = 'login.html'">
+          <i class=" fa-solid fa-right-from-bracket"></i> Logout
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <nav class="navbar">
+        <div style="display: flex; align-items: center; gap: 15px">
+          <i
+            class=" fa-solid fa-bars mobile-nav-toggle"
+            onclick="toggleSidebar()"
+          ></i>
+          <div style="font-weight: 800" id="page-title" class="desktop-only-title">
+            CITIZEN PORTAL
+          </div>
+          <a href="index.html"><img src="assets/new-logo.webp" class="mobile-only-logo" style="height: 30px; width: auto; display: none;" alt="STACKLY">
+            </a>
+          </div>
+        <div style="display: flex; gap: 15px; align-items: center; min-width: 0;">
+          <i
+            class=" fa-solid fa-bell"
+            style="font-size: 1.4rem; cursor: pointer; flex-shrink: 0;"
+            onclick="loadUserSection('notifications')"
+          ></i>
+          <div style="text-align: right; min-width: 0; max-width: 200px;" class="admin-user-info">
+            <b style="display: block; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="user-name"
+              >James Rubert</b
+            >
+            <span
+              style="
+                display: block;
+                font-size: 0.75rem;
+                color: var(--text-muted);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              "
+              class="user-email"
+              >Resident • james@STACKLY.com</span
+            >
+          </div>
+          <div
+            class="avatar user-initials"
+            style="
+              width: 40px;
+              height: 40px;
+              border-radius: 50%;
+              background: var(--accent);
+              color: #000;
+              border: 2px solid #000;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-weight: 800;
+              cursor: pointer;
+              flex-shrink: 0;
+            "
+          >
+            JR
+          </div>
+        </div>
+      </nav>
+
+      <div class="content-area" id="content-area"></div>
+    </div>
+
+  
+
+    <script>
+      function toggleSidebar() {
+        document.body.classList.toggle("sidebar-active");
+      }
+
+      function loadUserSection(section, el) {
+        const container = document.getElementById("content-area");
+
+        if (el) {
+          document
+            .querySelectorAll(".sidebar li")
+            .forEach((l) => l.classList.remove("active"));
+          el.classList.add("active");
+          if (window.innerWidth <= 789) {
+            document.body.classList.remove("sidebar-active");
+          }
+        }
+
+        container.innerHTML = "";
+        container.classList.remove("fade-in");
+        void container.offsetWidth;
+        container.classList.add("fade-in");
+
+        const sections = {
+          overview: `
+                <div class="bento-grid">
+                    <div class="bento-item">
+                        <span class="section-label">ENVIRONMENTAL TELEMETRY</span>
+                        <div class="stat-subgrid">
+                            <div class="stat-card hover-card pulse-hover">
+                                <i class=" fa-solid fa-gauge animate-float-complex" style="color: var(--accent);"></i>
+                                <span>AIR QUALITY</span>
+                                <b><span class="animate-counter" data-target="36">0</span> <small>AQI</small></b>
+                            </div>
+                            <div class="stat-card hover-card pulse-hover">
+                                <i class=" fa-solid fa-temperature-half animate-float-complex" style="color: var(--accent);"></i>
+                                <span>TEMP</span>
+                                <b><span class="animate-counter" data-target="24">0</span> <small>°C</small></b>
+                            </div>
+                            <div class="stat-card hover-card pulse-hover">
+                                <i class=" fa-solid fa-droplet animate-float-complex" style="color: var(--accent);"></i>
+                                <span>HUMIDITY</span>
+                                <b><span class="animate-counter" data-target="42">0</span> <small>%</small></b>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bento-item">
+                        <span class="badge-positive">POSITIVE</span>
+                        <span class="section-label">ENVIRONMENTAL IMPACT</span>
+                        <div class="impact-row">
+                            <div class="impact-item">
+                                <h3>3.2 <small style="font-size: 0.8rem; opacity: 0.5;">Tons</small></h3>
+                                <p>Carbon Offset (Life)</p>
+                            </div>
+                            <div class="impact-item" style="text-align: right;">
+                                <h3 style="color: var(--accent);">$2.8k</h3>
+                                <p>Fuel Savings (Life)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bento-item active-outline">
+                        <span class="section-label">PERFORMANCE SPECTRUM</span>
+                        <div class="chart-box">
+                            <canvas id="performanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="bento-item">
+                        <span class="section-label">NEARBY TRANSIT HUBS</span>
+                        <div class="hub-list">
+                            <div class="hub-item">
+                                <div class="hub-info">
+                                    <h4>Omni-Hub Central</h4>
+                                    <p>1.2 km • Autonomous Bus Arriving in 4m</p>
+                                </div>
+                                <div class="hub-power">LIVE</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+          profile: `
+                <div class="bento-grid">
+                    <div class="bento-item span-2">
+                        <span class="section-label">COMMANDER PROFILE</span>
+                        <div style="display: flex; align-items: center; gap: 30px; margin-top: 20px; flex-wrap: wrap;">
+                            <div style="width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(45deg, #111, #222); border: 2px solid var(--border); display: grid; place-items: center; font-size: 2.5rem; font-weight: 800;">JR</div>
+                            <div>
+                                <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 5px;">James Rubert</h2>
+                                <p style="color: var(--text-muted); font-weight: 600;">District Resident • Member Since 2024</p>
+                                <div style="margin-top: 15px; display: flex; gap: 10px;">
+                                    <span style="background: var(--accent); color: #000; padding: 5px 15px; border-radius: 8px; font-weight: 800; font-size: 0.7rem;">LVL 42</span>
+                                    <span style="background: rgba(255,255,255,0.05); color: #fff; padding: 5px 15px; border-radius: 8px; font-weight: 800; font-size: 0.7rem;">VERIFIED CITIZEN</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-item">
+                        <span class="section-label">ACCOUNT STATS</span>
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+                                <span>Safety Score</span>
+                                <b style="color: var(--accent);">98/100</b>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+                                <span>Efficiency Rank</span>
+                                <b>Top 5%</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bento-item">
+                        <span class="section-label">BADGES</span>
+                        <div style="display: flex; gap: 10px;">
+                            <i class=" fa-solid fa-shield-halved" style="font-size: 2rem; color: #4a9eff;"></i>
+                            <i class=" fa-solid fa-bolt" style="font-size: 2rem; color: var(--accent);"></i>
+                            <i class=" fa-solid fa-leaf" style="font-size: 2rem; color: #10b981;"></i>
+                        </div>
+                    </div>
+                </div>
+            `,
+          trips: `
+                <div class="bento-grid">
+                    <div class="bento-item span-2">
+                        <span class="section-label">MISSION HISTORY</span>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            ${[1, 2, 3]
+                              .map(
+                                () => `
+                                <div class="log-row">
+                                    <div><h4 style="font-size: 0.9rem;">Sector 7G → Research Lab</h4><p style="font-size: 0.75rem; color: var(--text-muted);">Today, 10:30 AM • 42 km • 12 kWh</p></div>
+                                    <div style="text-align: right;"><b style="color: var(--accent);">SUCCESS</b><p style="font-size: 0.6rem;">+150 XP</p></div>
+                                </div>
+                            `,
+                              )
+                              .join("")}
+                        </div>
+                    </div>
+                </div>
+            `,
+          charging: `
+            <div class="bento-grid">
+                        <div class="bento-item span-2">
+                            <h3 style="margin-bottom:20px; font-weight:800;">Recent Charging Sessions</h3>
+                            <div class="table-container">
+                                <table class="charge-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Station Location</th>
+                                            <th>Speed</th>
+                                            <th>Energy</th>
+                                            <th>Cost</th>
+                                        </tr>
+                                    </thead>
+    <tbody>
+                                        <tr>
+                                            <td data-label="Date">Mar 28, 2026</td>
+                                            <td data-label="Station Location"><b>Salem South Supercharger</b><br><span class="status-badge status-fast">DC Fast</span></td>
+                                            <td data-label="Speed">150 kW</td>
+                                            <td data-label="Energy">32 kWh</td>
+                                            <td data-label="Cost">$9.60</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Date">Mar 25, 2026</td>
+                                            <td data-label="Station Location"><b>Home Wallbox</b><br><span class="status-badge status-home">Level 2</span></td>
+                                            <td data-label="Speed">7.2 kW</td>
+                                            <td data-label="Energy">15 kWh</td>
+                                            <td data-label="Cost">$2.10</td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Date">Mar 21, 2026</td>
+                                            <td data-label="Station Location"><b>Salem Mall Charging Park</b><br><span class="status-badge status-fast">DC Fast</span></td>
+                                            <td data-label="Speed">50 kW</td>
+                                            <td data-label="Energy">22 kWh</td>
+                                            <td data-label="Cost">$6.50</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="bento-item span-1 battery-card">
+                            <div>
+                                <i class=" fa-solid fa-map" style="font-size:1.5rem; color:var(--accent)"></i>
+                                <p style="font-size:0.8rem; font-weight:700; margin-top:10px;">NEAREST STATION</p>
+                            </div>
+                            <div style="margin-top:20px;">
+                                <h4 style="font-weight:800;">Salem North Plaza</h4>
+                                <p style="font-size:0.8rem; opacity:0.7">1.2 km away • 4 slots free</p>
+                            </div>
+                            <button onclick="window.location.href='404.html'" style="background:var(--accent); color:#000; border:none; padding:12px; border-radius:10px; margin-top:20px; font-weight:800; width:100%; cursor:pointer;">NAVIGATE</button>
+                        </div>
+                    </div >
+          `,
+        };
+
+        container.innerHTML =
+          sections[section] ||
+          `<div class="bento-grid"><div class="bento-item">Section ${section} coming soon.</div></div>`;
+
+        if (section === "overview") {
+          setTimeout(initChart, 100);
+        }
+      }
+
+      function initChart() {
+        const ctx = document.getElementById("performanceChart");
+        if (!ctx) return;
+
+        new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            datasets: [
+              {
+                label: "Efficiency",
+                data: [20, 35, 10, 25, 55, 12, 10],
+                borderColor: "#d4ff00",
+                backgroundColor: "rgba(212, 255, 0, 0.05)",
+                fill: true,
+                tension: 0.5,
+                borderWidth: 3,
+                pointRadius: 0,
+              },
+            ],
+          },
+          options: {
+            plugins: { legend: { display: false } },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: { color: "#444", font: { size: 10 } },
+              },
+              y: { grid: { display: false }, display: false },
+            },
+            responsive: true,
+            maintainAspectRatio: false,
+          },
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        AOS.init({ duration: 800, once: true });
+
+        // Dynamic User Data
+        const userEmail =
+          localStorage.getItem("userEmail") || "james@STACKLY.com";
+        const userRole = localStorage.getItem("userRole") || "Resident";
+        let userName = localStorage.getItem("userName");
+        if (!userName || userName === "Welcome Back") userName = "James Rubert";
+        const initials =
+          userName
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .toUpperCase()
+            .substring(0, 2) || "JR";
+
+        const nameEl = document.querySelector(".user-name");
+        const emailEl = document.querySelector(".user-email");
+        const initialsEl = document.querySelector(".user-initials");
+
+        if (nameEl) nameEl.innerText = userName;
+        if (emailEl) emailEl.innerText = `${userRole} • ${userEmail}`;
+        if (initialsEl) initialsEl.innerText = initials;
+
+        loadUserSection(
+          "overview",
+          document.querySelector(".sidebar li.active"),
+        );
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+

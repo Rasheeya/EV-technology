@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>STACKLY | The Future of Urban Living</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/animations.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/index.css">
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <div class="nav-wrapper">
+        <a href="index.html" class="logo-box" style="font-size: 1.8rem; font-weight: 800; color: var(--accent); letter-spacing: -1px; text-decoration: none;">
+          <div style="height: 40px; width: 180px; background-color: var(--accent); -webkit-mask: url('assets/logo_0368.webp') no-repeat left center; -webkit-mask-size: contain; mask: url('assets/logo_0368.webp') no-repeat left center; mask-size: contain;" aria-label="Stackly Logo"></div>
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item"><a href="index.html" style="color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 5px;">HOME</a></li>
+          <li class="nav-item"><a href="infrastructure.html">INFRASTRUCTURE</a></li>
+          <li class="nav-item"><a href="about.html">ABOUT</a></li>
+          <li class="nav-item"><a href="solutions.html">SOLUTIONS</a></li>
+          <li class="nav-item"><a href="news.html">NEWS</a></li>
+          <li class="nav-item"><a href="contact.html">CONTACT</a></li>
+          <li class="nav-item nav-login-btn">
+            <div class="nav-buttons">
+              <a href="login.html" class="btn-primary" style="background: rgba(15, 147, 47, 0.2); border: 1px solid var(--accent); box-shadow: 0 0 15px rgba(15, 147, 47, 0.4); text-transform: uppercase; font-weight: bold; padding: 10px 20px; border-radius: 25px; color: #fff; text-decoration: none;">PORTAL LOGIN</a>
+            </div>
+          </li>
+        </ul>
+
+        <div
+          class="mobile-trigger"
+          id="mobileTrigger"
+          style="z-index: 3000; position: relative"
+        >
+          <i class=" fa-solid fa-bars" id="menuIcon"></i>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero-slider">
+      <div class="slide active">
+        <img
+          src="assets/hero-1-new.webp"
+          class="slide-bg animate-float"
+          alt="Smart City Infrastructure"
+        />
+        <div class="hero-content">
+          <h1 style="font-size: 5rem; line-height: 1.1; font-weight: 800; margin-bottom: 20px;">
+            <span style="color: #fff;">Intelligent</span><br />
+            <span style="white-space: nowrap;"><span style="color: var(--accent);">Infrastructure</span><span style="display: inline-block; width: 8px; height: 8px; background: #fff; margin-left: 10px; vertical-align: baseline;"></span></span>
+          </h1>
+          <p style="font-size: 1.2rem; color: #fff; max-width: 600px; margin-bottom: 40px; line-height: 1.6;">
+            Experience the next generation of urban management with our AI-powered city grid and IoT sensors.
+          </p>
+          <div class="hero-btns" style="display: flex; gap: 20px;">
+            <a href="404.html" class="btn-primary" style="padding: 15px 30px; font-weight: bold; background: var(--accent); color: #fff; border: none; border-radius: 8px; text-decoration: none;">Explore Solutions</a>
+            <a href="404.html" class="btn-outline" style="padding: 15px 30px; font-weight: bold; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: #fff; border-radius: 8px; backdrop-filter: blur(5px); text-decoration: none;">Request Demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img
+          src="assets/hero-2-new.webp"
+          class="slide-bg animate-float"
+          alt="Digital Twin City"
+        />
+        <div class="hero-content">
+          <h1 data-aos="fade-up">Digital <span>Twin</span> Technology.</h1>
+          <p data-aos="fade-up" data-aos-delay="100" style="color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+            Monitor, simulate, and optimize city operations in real-time with interconnected data streams.
+          </p>
+          <div class="hero-btns">
+            <a href="404.html" class="btn-primary glow-effect">View Dashboard</a>
+            <a href="404.html" class="btn-secondary">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img
+          src="assets/hero-3-new.webp"
+          class="slide-bg animate-float"
+          alt="Renewable Energy Grid"
+        />
+        <div class="hero-content">
+          <h1 data-aos="fade-up">Sustainable <span>Energy</span>.</h1>
+          <p data-aos="fade-up" data-aos-delay="100" style="color: #ffffff; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">
+            From solar integration to smart grid distribution, we keep your city powered cleanly and efficiently.
+          </p>
+          <div class="hero-btns">
+            <a href="404.html" class="btn-primary glow-effect">Our Vision</a>
+            <a href="404.html" class="btn-secondary">Energy Solutions</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-dots">
+        <div class="dot active" onclick="setSlide(0)"></div>
+        <div class="dot" onclick="setSlide(1)"></div>
+        <div class="dot" onclick="setSlide(2)"></div>
+      </div>
+    </section>
+
+    <section id="why-choose">
+      <div class="section-header" style="text-align: center; padding: 100px 8% 20px;">
+        <h2 data-aos="fade-up">Why Choose STACKLY</h2>
+        <p data-aos="fade-up" data-aos-delay="100" style="max-width: 700px; margin: 0 auto;">
+          Transform your urban environment with unmatched innovation, data-driven efficiency, and sustainable architecture.
+        </p>
+      </div>
+
+      <div class="why-grid container">
+        <div class="why-card" data-aos="fade-up">
+          <div class="why-content">
+            <i class=" fa-solid fa-leaf" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h3 data-aos="fade-up" data-aos-delay="200">Sustainable Growth</h3>
+            <p data-aos="fade-up" data-aos-delay="300">
+              Reduce carbon footprints with AI-optimized energy distribution and renewable integrations.
+            </p>
+          </div>
+        </div>
+
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-content">
+            <i class=" fa-solid fa-chart-line" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h3 data-aos="fade-up" data-aos-delay="300">Resource Optimization</h3>
+            <p data-aos="fade-up" data-aos-delay="400">
+              Save up to 40% on municipal costs through predictive maintenance and automated systems.
+            </p>
+          </div>
+        </div>
+
+        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-content">
+            <i class=" fa-solid fa-car-side" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h3 data-aos="fade-up" data-aos-delay="400">Smart Mobility</h3>
+            <p data-aos="fade-up" data-aos-delay="500">
+              Seamlessly connect autonomous public transit and EV charging networks across the city.
+            </p>
+          </div>
+        </div>
+
+        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-content">
+            <i class=" fa-solid fa-microchip" style="font-size: 3rem; margin-bottom: 20px;"></i>
+            <h3 data-aos="fade-up" data-aos-delay="500">Data-Driven Insights</h3>
+            <p data-aos="fade-up" data-aos-delay="600">
+              Make informed decisions with real-time analytics from thousands of connected IoT endpoints.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-highlight container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 50px; align-items: center; padding-top: 50px; padding-bottom: 100px;">
+        <div class="highlight-image" data-aos="fade-right">
+          <img
+            src="assets/hero-2-new.webp"
+            alt="City Dashboard"
+            style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,255,136,0.2);"
+            data-aos="zoom-in"
+          />
+        </div>
+
+        <div class="highlight-content">
+          <h3 data-aos="fade-up" style="font-size: 2.5rem; margin-bottom: 20px;">Designed for the Future</h3>
+          <p data-aos="fade-up" data-aos-delay="100">
+            STACKLY combines cutting-edge AI technology, futuristic urban planning,
+            and sustainable engineering to create environments that adapt to citizen needs in real-time.
+          </p>
+
+          <ul style="list-style: none; padding: 0; margin: 30px 0; display: flex; flex-direction: column; gap: 15px;">
+            <li>
+              <i class=" fa-solid fa-circle-check" style="color: var(--accent); margin-right: 10px;"></i> AI Traffic Management
+            </li>
+            <li>
+              <i class=" fa-solid fa-circle-check" style="color: var(--accent); margin-right: 10px;"></i> Automated Waste Collection
+            </li>
+            <li>
+              <i class=" fa-solid fa-circle-check" style="color: var(--accent); margin-right: 10px;"></i> Seamless Digital Citizen Ecosystem
+            </li>
+          </ul>
+
+          <button class="btn-primary glow-effect" style="border: none; cursor: pointer;" onclick="window.location.href='404.html'">Explore Platform</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="app" class="app-section" style="background: var(--bg-light); padding: 100px 0;">
+      <!-- HEADER -->
+      <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+        <h2 data-aos="fade-up">Citizen App Integration</h2>
+        <p data-aos="fade-up" data-aos-delay="100">
+          Empower your residents with a powerful mobile suite connecting them to city services.
+        </p>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <div class="app-container container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 50px; align-items: center;">
+        <!-- LEFT SIDE (APP IMAGE) -->
+        <div class="app-visual" data-aos="zoom-in" data-aos-duration="1200">
+          <img
+            src="assets/hero-1-new.webp"
+            alt="Citizen Mobile App"
+            style="width: 100%; border-radius: 20px; border: 2px solid var(--border);"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          />
+        </div>
+
+        <!-- RIGHT SIDE (FEATURE GRID) -->
+        <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 30px;">
+          <div class="feature-box" data-aos="fade-up" data-aos-delay="100" style="background: var(--deep-charcoal); padding: 30px; border-radius: 20px; border: 1px solid var(--border);">
+            <i class=" fa-solid fa-bus" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+            <div class="feature-content">
+              <h4 data-aos="fade-up" style="margin-bottom: 10px;">Live Transit</h4>
+              <p data-aos="fade-up" data-aos-delay="100" style="font-size: 0.9rem;">Track autonomous buses and trains in real-time.</p>
+            </div>
+          </div>
+
+          <div class="feature-box" data-aos="fade-up" data-aos-delay="200" style="background: var(--deep-charcoal); padding: 30px; border-radius: 20px; border: 1px solid var(--border);">
+            <i class=" fa-solid fa-circle-exclamation" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+            <div class="feature-content">
+              <h4 data-aos="fade-up" style="margin-bottom: 10px;">Issue Reporting</h4>
+              <p data-aos="fade-up" data-aos-delay="100" style="font-size: 0.9rem;">Report potholes or outages instantly to city teams.</p>
+            </div>
+          </div>
+
+          <div class="feature-box" data-aos="fade-up" data-aos-delay="300" style="background: var(--deep-charcoal); padding: 30px; border-radius: 20px; border: 1px solid var(--border);">
+            <i class=" fa-solid fa-lightbulb" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+            <div class="feature-content">
+              <h4 data-aos="fade-up" style="margin-bottom: 10px;">Energy Usage</h4>
+              <p data-aos="fade-up" data-aos-delay="100" style="font-size: 0.9rem;">Monitor household consumption and smart grid metrics.</p>
+            </div>
+          </div>
+
+          <div class="feature-box" data-aos="fade-up" data-aos-delay="400" style="background: var(--deep-charcoal); padding: 30px; border-radius: 20px; border: 1px solid var(--border);">
+            <i class=" fa-solid fa-id-card" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+            <div class="feature-content">
+              <h4 data-aos="fade-up" style="margin-bottom: 10px;">Digital ID</h4>
+              <p data-aos="fade-up" data-aos-delay="100" style="font-size: 0.9rem;">Secure access to municipal buildings and services.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-container" id="faq">
+      <div class="faq-wrapper">
+        <div style="text-align: center; margin-bottom: 60px">
+          <span class="section-label" data-aos="fade-up">Support</span>
+          <h2 data-aos="fade-up" data-aos-delay="100">Implementation FAQs</h2>
+          <p data-aos="fade-up" data-aos-delay="200">Common questions about transitioning to a smart city framework.</p>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up">
+          <div class="faq-question">
+            <h4>How long does a city-wide deployment take?</h4>
+            <div class="faq-icon"><i class=" fa-solid fa-caret-down"></i></div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Deployments are phased to minimize disruption. A foundational IoT grid and central dashboard can be established in 6-8 months, while full autonomous integration and renewable grid retrofitting typically spans 2-5 years depending on the city's size.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+          <div class="faq-question">
+            <h4>Is citizen data secure on the STACKLY platform?</h4>
+            <div class="faq-icon"><i class=" fa-solid fa-caret-down"></i></div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Absolutely. We utilize military-grade quantum encryption and decentralized blockchain ledgers to ensure all citizen data is anonymized and strictly protected against cyber threats. Privacy is embedded into the core architecture.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+          <div class="faq-question">
+            <h4>Can existing legacy infrastructure be integrated?</h4>
+            <div class="faq-icon"><i class=" fa-solid fa-caret-down"></i></div>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Yes, our platform is designed to be backwards compatible. Through edge-computing API gateways, we can connect legacy traffic lights, water systems, and power grids to the central AI, upgrading them without full physical replacement.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand" data-aos="fade-up">
+          <a href="index.html" class="logo-box" style="font-size: 1.8rem; color: var(--accent); letter-spacing: -1px; margin-bottom: 20px;">
+            <div style="height: 40px; width: 180px; background-color: var(--accent); -webkit-mask: url('assets/logo_0368.webp') no-repeat left center; -webkit-mask-size: contain; mask: url('assets/logo_0368.webp') no-repeat left center; mask-size: contain; margin-bottom: 20px;" aria-label="Stackly Logo"></div>
+          </a>
+          <p>
+            Redefining the boundaries of urban living through intelligent data, sustainable infrastructure, and connected communities.
+          </p>
+          <div class="social-links">
+            <a href="404.html"><i class=" fa-brands fa-instagram"></i></a>
+            <a href="404.html"><i class=" fa-brands fa-x-twitter"></i></a>
+            <a href="404.html"><i class=" fa-brands fa-linkedin"></i></a>
+            <a href="404.html"><i class=" fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-column" data-aos="fade-up" data-aos-delay="100">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="solutions.html">SOLUTIONS</a></li>
+            <li><a href="news.html">News & Updates</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column" data-aos="fade-up" data-aos-delay="200">
+          <h4 class="footer-heading">Ecosystem</h4>
+          <ul class="footer-links">
+            <li><a href="404.html">Smart Grid</a></li>
+            <li><a href="404.html">IoT Sensors</a></li>
+            <li><a href="404.html">Data Dashboard</a></li>
+            <li><a href="404.html">Citizen Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column newsletter-box" data-aos="fade-up" data-aos-delay="300">
+          <h4 class="footer-heading">Stay Connected</h4>
+          <p>Get the latest updates on smart city innovations and deployments.</p>
+          <form class="input-group" onsubmit="event.preventDefault(); window.location.href='404.html';">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit" class="btn-send" >
+              <i class=" fa-solid fa-paper-plane" style="font-size: 1.2rem; color: #000 !important;"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="copyright">
+          &copy; 2026 STACKLY Technologies. Designed for the Future.
+        </div>
+        <div class="footer-links" style="display: flex; gap: 20px; margin-bottom: 0">
+          <a href="404.html" style="font-size: 0.8rem">Privacy Policy</a>
+          <a href="404.html" style="font-size: 0.8rem">Terms of Service</a>
+          <a href="404.html" style="font-size: 0.8rem">Cookies</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      AOS.init({ duration: 1000, once: true });
+
+      const navbar = document.getElementById("navbar");
+      const mobileTrigger = document.getElementById("mobileTrigger");
+      const navMenu = document.getElementById("navMenu");
+      const menuIcon = document.getElementById("menuIcon");
+
+      // 1. Scroll Effect
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+      });
+
+      // 2. Fixed Hamburger Toggle Logic
+      mobileTrigger.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevents document click from firing
+        navMenu.classList.toggle("active");
+
+        // Swap Icons manually to ensure it triggers
+        if (navMenu.classList.contains("active")) {
+          menuIcon.classList.remove("fa-solid fa-bars");
+          menuIcon.classList.add("fa-solid fa-xmark");
+        } else {
+          menuIcon.classList.remove("fa-solid fa-xmark");
+          menuIcon.classList.add("fa-solid fa-bars");
+        }
+      });
+
+      // 3. Close menu when clicking a link
+      document.querySelectorAll(".nav-item a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("active");
+          menuIcon.classList.replace("fa-solid fa-xmark", "fa-solid fa-bars");
+        });
+      });
+
+      // 4. Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!navMenu.contains(e.target) && !mobileTrigger.contains(e.target)) {
+          navMenu.classList.remove("active");
+          menuIcon.classList.replace("fa-solid fa-xmark", "fa-solid fa-bars");
+        }
+      });
+
+      // 5. Loading Screen
+      window.addEventListener("load", () => {
+        const loader = document.getElementById("loader");
+        setTimeout(() => {
+          loader.classList.add("loader-hidden");
+        }, 300);
+      });
+
+      // 6. Active Navbar Link
+      const currentLocation = window.location.pathname.split("/").pop();
+      const navLinks = document.querySelectorAll(".nav-item a");
+      navLinks.forEach((link) => {
+        if (link.getAttribute("href") === currentLocation || (currentLocation === '' && link.getAttribute("href") === 'index.html')) {
+          link.classList.add("active");
+        }
+      });
+    </script>
+    <script>
+      document.querySelectorAll(".faq-question").forEach((question) => {
+        question.addEventListener("click", () => {
+          const item = question.parentElement;
+
+          // Close other open items
+          document.querySelectorAll(".faq-item").forEach((otherItem) => {
+            if (otherItem !== item) {
+              otherItem.classList.remove("active");
+            }
+          });
+
+          item.classList.toggle("active");
+        });
+      });
+    </script>
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".dot");
+
+      function showSlide(index) {
+        slides.forEach((s) => s.classList.remove("active"));
+        dots.forEach((d) => d.classList.remove("active"));
+
+        slides[index].classList.add("active");
+        dots[index].classList.add("active");
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        let index = (currentSlide + 1) % slides.length;
+        showSlide(index);
+      }
+
+      function setSlide(index) {
+        showSlide(index);
+        clearInterval(slideTimer); // Reset timer on manual click
+        slideTimer = setInterval(nextSlide, 6000);
+      }
+
+      let slideTimer = setInterval(nextSlide, 6000); // Change slide every 6 seconds
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
